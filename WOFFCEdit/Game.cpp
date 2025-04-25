@@ -21,42 +21,23 @@ Game::Game()
 	m_displayList.clear();
 	
 	//initial Settings
+    
+    if (m_camera == nullptr) {
+        m_camera = new Camera(); // or use a smart pointer like std::unique_ptr
+    }
+
 	//modes
 	m_grid = false;
-
-	//functional
-	m_movespeed = 0.30;
-	m_camRotRate = 3.0;
-
-	//camera
-	m_camPosition.x = 0.0f;
-	m_camPosition.y = 3.7f;
-	m_camPosition.z = -3.5f;
-
-	m_camOrientation.x = 0;
-	m_camOrientation.y = 0;
-	m_camOrientation.z = 0;
-
-	m_camLookAt.x = 0.0f;
-	m_camLookAt.y = 0.0f;
-	m_camLookAt.z = 0.0f;
-
-	m_camLookDirection.x = 0.0f;
-	m_camLookDirection.y = 0.0f;
-	m_camLookDirection.z = 0.0f;
-
-	m_camRight.x = 0.0f;
-	m_camRight.y = 0.0f;
-	m_camRight.z = 0.0f;
-
-	m_camOrientation.x = 0.0f;
-	m_camOrientation.y = 0.0f;
-	m_camOrientation.z = 0.0f;
 
 }
 
 Game::~Game()
 {
+	if (m_camera)
+	{
+		delete m_camera;
+		m_camera = nullptr;
+	}
 
 #ifdef DXTK_AUDIO
     if (m_audEngine)
@@ -117,8 +98,12 @@ void Game::SetGridState(bool state)
 // Executes the basic game loop.
 void Game::Tick(InputCommands *Input)
 {
+	
+
 	//copy over the input commands so we have a local version to use elsewhere.
 	m_InputCommands = *Input;
+
+    m_camera->Tick(Input);	//pass the input commands to the camera for processing
     m_timer.Tick([&]()
     {
         Update(m_timer);
@@ -142,70 +127,17 @@ void Game::Update(DX::StepTimer const& timer)
 {
 	//TODO  any more complex than this, and the camera should be abstracted out to somewhere else
 	//camera motion is on a plane, so kill the 7 component of the look direction
-	Vector3 planarMotionVector = m_camLookDirection;
-	planarMotionVector.y = 0.0;
+    if (m_camera)
+    {
+		m_camera->Update(timer.GetElapsedSeconds());
 
-	if (m_InputCommands.rotRight)
-	{
-		m_camOrientation.y -= m_camRotRate;
-	}
-	if (m_InputCommands.rotLeft)
-	{
-		m_camOrientation.y += m_camRotRate;
-	}
-	if (m_InputCommands.rotUp)
-	{
-		m_camOrientation.x += m_camRotRate;
-		if (m_camLookDirection.y >= 90)
-	}
-	if (m_InputCommands.rotDown)
-	{
-		m_camOrientation.x -= m_camRotRate;
-	}
-
-	//create look direction from Euler angles in m_camOrientation
-
-	/*m_camLookDirection.x = sin((m_camOrientation.y)*3.1415 / 180);
-	m_camLookDirection.z = cos((m_camOrientation.y)*3.1415 / 180);
-	m_camLookDirection.Normalize();*/
-
-	m_camLookDirection.x = cos((m_camOrientation.y) * 3.1415 / 180) * cos((m_camOrientation.x) * 3.1415 / 180);
-	m_camLookDirection.y = sin((m_camOrientation.x) * 3.1415 / 180);
-	m_camLookDirection.z = sin((m_camOrientation.y) * 3.1415 / 180) * cos((m_camOrientation.x) * 3.1415 / 180);
-	m_camLookDirection.Normalize();
-
-
-	//create right vector from look Direction
-	m_camLookDirection.Cross(Vector3::UnitY, m_camRight);
-
-	//process input and update stuff
-	if (m_InputCommands.forward)
-	{	
-		m_camPosition += m_camLookDirection*m_movespeed;
-	}
-	if (m_InputCommands.back)
-	{
-		m_camPosition -= m_camLookDirection*m_movespeed;
-	}
-	if (m_InputCommands.right)
-	{
-		m_camPosition += m_camRight*m_movespeed;
-	}
-	if (m_InputCommands.left)
-	{
-		m_camPosition -= m_camRight*m_movespeed;
-	}
-
-	//update lookat point
-	m_camLookAt = m_camPosition + m_camLookDirection;
-
-	//apply camera vectors
-    m_view = Matrix::CreateLookAt(m_camPosition, m_camLookAt, Vector3::UnitY);
-
+		m_view = m_camera->GetLookAt();
+    }
     m_batchEffect->SetView(m_view);
     m_batchEffect->SetWorld(Matrix::Identity);
-	m_displayChunk.m_terrainEffect->SetView(m_view);
-	m_displayChunk.m_terrainEffect->SetWorld(Matrix::Identity);
+    m_displayChunk.m_terrainEffect->SetView(m_view);
+    m_displayChunk.m_terrainEffect->SetWorld(Matrix::Identity);
+	
 
 #ifdef DXTK_AUDIO
     m_audioTimerAcc -= (float)timer.GetElapsedSeconds();
@@ -261,7 +193,7 @@ void Game::Render()
 	//CAMERA POSITION ON HUD
 	m_sprites->Begin();
 	WCHAR   Buffer[256];
-	std::wstring var = L"Cam X: " + std::to_wstring(m_camPosition.x) + L"Cam Z: " + std::to_wstring(m_camPosition.z);
+	std::wstring var = L"Cam X: " + std::to_wstring(m_camera->GetCameraPos().x) + L"Cam Z: " + std::to_wstring(m_camera->GetCameraPos().z);
 	m_font->DrawString(m_sprites.get(), var.c_str() , XMFLOAT2(100, 10), Colors::Yellow);
 	m_sprites->End();
 
