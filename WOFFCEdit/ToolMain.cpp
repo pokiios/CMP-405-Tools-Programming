@@ -348,6 +348,16 @@ void ToolMain::UpdateInput(MSG * msg)
 		m_toolInputCommands.rotLeft = true;
 	}
 	else m_toolInputCommands.rotLeft = false;
+	if (m_keyArray['O'])
+	{
+		m_toolInputCommands.rotUp = true;
+	}
+	else m_toolInputCommands.rotUp = false;
+	if (m_keyArray['P'])
+	{
+		m_toolInputCommands.rotDown = true;
+	}
+	else m_toolInputCommands.rotDown = false;
 
 	//WASD
 }
