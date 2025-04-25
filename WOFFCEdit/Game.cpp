@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "DisplayObject.h"
 #include <string>
+#include <list>
 
 
 using namespace DirectX;
@@ -254,6 +255,7 @@ int Game::MousePicking()
 {
     int selectedID = -1;
     float pickedDistance = 0;
+    float closestDistance = D3D10_FLOAT32_MAX;
 
     //setup near and far planes of frustum with mouse X and mouse y passed down from Toolmain. 
         //they may look the same but note, the difference in Z
@@ -289,9 +291,14 @@ int Game::MousePicking()
             //checking for ray intersection
             if (m_displayList[i].m_model.get()->meshes[y]->boundingBox.Intersects(nearPoint, pickingVector, pickedDistance))
             {
-                selectedID = i;
+                if (pickedDistance < closestDistance)
+                {
+					closestDistance = pickedDistance;
+                    selectedID = i;	//get the ID of the object that was hit
+                }
             }
         }
+
     }
 
     //if we got a hit.  return it.  

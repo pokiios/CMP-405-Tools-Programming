@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Visual Studio\\VC\\Tools\\MSVC\\14.43.34808\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -42,7 +45,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,7 +57,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
+              "Title": "vector",
+              "DocumentMoniker": "D:\\Visual Studio\\VC\\Tools\\MSVC\\14.43.34808\\include\\vector",
+              "RelativeDocumentMoniker": "..\\..\\..\\Visual Studio\\VC\\Tools\\MSVC\\14.43.34808\\include\\vector",
+              "ToolTip": "D:\\Visual Studio\\VC\\Tools\\MSVC\\14.43.34808\\include\\vector",
+              "RelativeToolTip": "..\\..\\..\\Visual Studio\\VC\\Tools\\MSVC\\14.43.34808\\include\\vector",
+              "ViewState": "AgIAAGoHAAAAAAAAAAAqwHgHAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-25T23:47:19.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ToolMain.h",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.h",
               "RelativeDocumentMoniker": "ToolMain.h",
@@ -66,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Camera.cpp",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Camera.cpp",
               "RelativeDocumentMoniker": "Camera.cpp",
@@ -79,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Camera.h",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Camera.h",
               "RelativeDocumentMoniker": "Camera.h",
@@ -91,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "InputCommands.h",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\InputCommands.h",
               "RelativeDocumentMoniker": "InputCommands.h",
@@ -104,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Game.h",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.h",
               "RelativeDocumentMoniker": "Game.h",
@@ -123,14 +139,14 @@
               "RelativeDocumentMoniker": "Game.cpp",
               "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp",
               "RelativeToolTip": "Game.cpp",
-              "ViewState": "AgIAACQBAAAAAAAAAAAxwAQBAABYAAAAAAAAAA==",
+              "ViewState": "AgIAABIBAAAAAAAAAAAcwCgBAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-25T18:40:25.751Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ToolMain.cpp",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.cpp",
               "RelativeDocumentMoniker": "ToolMain.cpp",
@@ -143,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Main.cpp",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Main.cpp",
               "RelativeDocumentMoniker": "Main.cpp",
