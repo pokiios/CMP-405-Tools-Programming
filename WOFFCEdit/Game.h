@@ -51,6 +51,7 @@ public:
 	void BuildDisplayChunk(ChunkObject *SceneChunk);
 	void SaveDisplayChunk(ChunkObject *SceneChunk);	//saves geometry et al
 	void ClearDisplayList();
+	int	 MousePicking();
 
 #ifdef DXTK_AUDIO
 	void NewAudioDevice();
@@ -70,7 +71,7 @@ private:
 	DisplayChunk						m_displayChunk;
 	InputCommands						m_InputCommands;
 	Camera*								m_camera;
-
+	RECT								m_ScreenDimensions;
 
 
 	//control variables

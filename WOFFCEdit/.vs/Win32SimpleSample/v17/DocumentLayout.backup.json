@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:ToolMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\InputCommands.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ToolMain.h",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.h",
               "RelativeDocumentMoniker": "ToolMain.h",
@@ -62,25 +62,24 @@
               "RelativeToolTip": "ToolMain.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T22:37:56.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T22:37:56.472Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Camera.cpp",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Camera.cpp",
               "RelativeDocumentMoniker": "Camera.cpp",
               "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Camera.cpp",
               "RelativeToolTip": "Camera.cpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-25T21:25:47.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Camera.h",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Camera.h",
               "RelativeDocumentMoniker": "Camera.h",
@@ -88,8 +87,7 @@
               "RelativeToolTip": "Camera.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T21:20:46.28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T21:20:46.28Z"
             },
             {
               "$type": "Document",
@@ -101,8 +99,7 @@
               "RelativeToolTip": "InputCommands.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T18:55:02.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T18:55:02.215Z"
             },
             {
               "$type": "Document",
@@ -114,25 +111,24 @@
               "RelativeToolTip": "Game.h",
               "ViewState": "AgIAAAYAAAAAAAAAAAAmwEcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T18:54:54.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T18:54:54.595Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Game.cpp",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp",
               "RelativeDocumentMoniker": "Game.cpp",
               "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp",
               "RelativeToolTip": "Game.cpp",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAuwGkAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAuwGMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-25T18:40:25.751Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ToolMain.cpp",
               "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.cpp",
               "RelativeDocumentMoniker": "ToolMain.cpp",
@@ -140,8 +136,7 @@
               "RelativeToolTip": "ToolMain.cpp",
               "ViewState": "AgIAAFQBAAAAAAAAAAAAwGsBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T17:59:28.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T17:59:28.129Z"
             },
             {
               "$type": "Document",
@@ -153,8 +148,7 @@
               "RelativeToolTip": "Main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T17:58:11.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T17:58:11.527Z"
             }
           ]
         },
