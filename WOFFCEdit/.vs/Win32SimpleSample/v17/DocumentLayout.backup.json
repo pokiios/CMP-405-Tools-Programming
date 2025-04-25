@@ -1,0 +1,127 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:ToolMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\InputCommands.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:InputCommands.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD0BCFE9-F760-43EB-9C31-BBFD23F397D9}|Win32SimpleSample.vcxproj|solutionrelative:Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputCommands.h",
+              "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\InputCommands.h",
+              "RelativeDocumentMoniker": "InputCommands.h",
+              "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\InputCommands.h",
+              "RelativeToolTip": "InputCommands.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-25T18:55:02.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Game.h",
+              "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.h",
+              "RelativeDocumentMoniker": "Game.h",
+              "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.h",
+              "RelativeToolTip": "Game.h",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAEUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-25T18:54:54.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp",
+              "RelativeDocumentMoniker": "Game.cpp",
+              "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Game.cpp",
+              "RelativeToolTip": "Game.cpp",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAKAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-25T18:40:25.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ToolMain.cpp",
+              "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.cpp",
+              "RelativeDocumentMoniker": "ToolMain.cpp",
+              "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\ToolMain.cpp",
+              "RelativeToolTip": "ToolMain.cpp",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAAwGsBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-25T17:59:28.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Main.cpp",
+              "RelativeDocumentMoniker": "Main.cpp",
+              "ToolTip": "D:\\SCHOOL\\WFFC-Edit-master\\WOFFCEdit\\Main.cpp",
+              "RelativeToolTip": "Main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-25T17:58:11.527Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

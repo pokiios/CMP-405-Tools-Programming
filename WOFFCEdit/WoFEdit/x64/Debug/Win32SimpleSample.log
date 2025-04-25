@@ -1,0 +1,11 @@
+﻿  Game.cpp
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(28,16): warning C4305: '=': truncation from 'double' to 'float'
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(160,2): error C2059: syntax error: '}'
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(172,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(173,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(174,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(269,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(279,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(278,57): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(277,97): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Game.cpp(415,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
