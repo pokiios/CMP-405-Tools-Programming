@@ -255,7 +255,7 @@ int Game::MousePicking()
 {
     int selectedID = -1;
     float pickedDistance = 0;
-    float closestDistance = D3D10_FLOAT32_MAX;
+	float closestDistance = D3D10_FLOAT32_MAX; // Set to max float value
 
     //setup near and far planes of frustum with mouse X and mouse y passed down from Toolmain. 
         //they may look the same but note, the difference in Z
@@ -303,6 +303,43 @@ int Game::MousePicking()
 
     //if we got a hit.  return it.  
     return selectedID;
+}
+
+// Clears the display list
+void Game::CopyObject(int id)
+{
+    // Copy object ID to clipboard
+    if (id != -1)
+    {
+		clipboardObj = m_displayList[id]; // Copy the object to clipboard
+    }
+}
+
+// Pastes the object from clipboard to display list
+void Game::PasteObject(int id)
+{
+    // Find new position based on the current clipboard object and an offset
+	DirectX::SimpleMath::Vector3 finalPosition = FindNextAvailablePosition(clipboardObj.m_position, 5); 
+    clipboardObj.m_position = finalPosition;
+    m_displayList.push_back(clipboardObj);
+}
+
+// Checks if the position is free before pasting
+DirectX::SimpleMath::Vector3 Game::FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPos, float offset)
+{
+	// Check all current objects in the display list
+	for (int i = 0; i < m_displayList.size(); i++)
+	{
+		// Check if the position is free
+		if (m_displayList[i].m_position == finalPos)
+		{
+			// If not, move it to the right
+			finalPos.x += offset;
+			return FindNextAvailablePosition(finalPos, offset);
+		}
+	}
+
+	return finalPos; // Return the final position if it's free
 }
 
 

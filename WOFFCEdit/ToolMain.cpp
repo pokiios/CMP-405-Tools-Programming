@@ -18,6 +18,7 @@ ToolMain::ToolMain()
 	m_toolInputCommands.back		= false;
 	m_toolInputCommands.left		= false;
 	m_toolInputCommands.right		= false;
+
 	
 }
 
@@ -296,6 +297,20 @@ void ToolMain::Tick(MSG *msg)
 		m_toolInputCommands.mouseLBDown = false;
 	}
 
+	if (m_toolInputCommands.copy)
+	{
+		// copy the object
+		m_d3dRenderer.CopyObject(m_selectedObject);
+		m_toolInputCommands.copy = false;
+	}
+
+	if (m_toolInputCommands.paste)
+	{
+		// paste the object
+		m_d3dRenderer.PasteObject(m_selectedObject);
+		m_toolInputCommands.paste = false;
+	}
+
 }
 
 void ToolMain::UpdateInput(MSG * msg)
@@ -322,8 +337,10 @@ void ToolMain::UpdateInput(MSG * msg)
 		//mouse left pressed.	
 		m_toolInputCommands.mouseLBDown = true;
 		break;
-
-
+	case WM_RBUTTONDOWN:
+		//mouse right pressed.	
+		m_toolInputCommands.mouseRBDown = true;
+		break;
 
 	}
 	//here we update all the actual app functionality that we want.  This information will either be used int toolmain, or sent down to the renderer (Camera movement etc
@@ -371,6 +388,14 @@ void ToolMain::UpdateInput(MSG * msg)
 		m_toolInputCommands.rotDown = true;
 	}
 	else m_toolInputCommands.rotDown = false;
-
-	//WASD
+	if (m_keyArray['C'])
+	{
+		m_toolInputCommands.copy = true;
+	}
+	else m_toolInputCommands.copy = false;
+	if (m_keyArray['V'])
+	{
+		m_toolInputCommands.paste = true;
+	}
+	else m_toolInputCommands.paste = false;
 }

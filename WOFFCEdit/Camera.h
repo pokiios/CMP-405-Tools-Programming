@@ -2,6 +2,7 @@
 
 #include "pch.h"
 #include "InputCommands.h"
+#include <cstdint>
 
 class Camera
 {
@@ -17,6 +18,8 @@ private:
 	float m_camRotRate; // camera rotation rate
 	float m_movespeed; // camera movement speed
 	float m_mouseSens; // mouse sensitivity
+	float m_mouseLastYPos; // last Y position of the mouse
+	float m_mouseLastXPos; // last X position of the mouse
 
 	
 public:

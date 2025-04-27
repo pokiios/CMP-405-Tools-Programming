@@ -46,6 +46,25 @@ void Camera::InputHandling(InputCommands m_input, float deltaTime)
 	DirectX::SimpleMath::Vector3 planarMotionVector = m_camLookDirection;
 	planarMotionVector.y = 0.0;
 
+	// https://asliceofrendering.com/camera/2019/11/30/ArcballCamera/
+	//Arcball Camera
+	// Rotate camera around pivot is mouse down
+	if (m_input.mouseRBDown)
+	{
+		// Calculate Rotation Angles
+		float deltaAngleX = (2 * 3.14159 / m_viewDimensions.right);
+		float deltaAngleY = (3.14159 / m_viewDimensions.bottom);
+
+		// Calculate the change in mouse position
+		float deltaX = (m_input.mouseX - m_mouseLastXPos);
+		float deltaY = (m_input.mouseY - m_mouseLastYPos);
+
+		// Update camera orientation based on mouse movement
+		m_camOrientation.y += deltaX * m_mouseSens;
+		m_camOrientation.x -= deltaY * m_mouseSens;
+	}
+
+
 	//process input and update rotation
 	if (m_input.rotRight)
 	{
@@ -64,10 +83,21 @@ void Camera::InputHandling(InputCommands m_input, float deltaTime)
 		m_camOrientation.x -= m_camRotRate;
 	}
 
+	// Quick fix Clamp the camera orientation
+	if (m_camOrientation.x > 89.0f)
+	{
+		m_camOrientation.x = 89.0f;
+	}
+	if (m_camOrientation.x < -89.0f)
+	{
+		m_camOrientation.x = -89.0f;
+	}
+
 	// Calculating the camera look direction
 	m_camLookDirection.x = cos((m_camOrientation.y) * 3.1415 / 180) * cos((m_camOrientation.x) * 3.1415 / 180);
 	m_camLookDirection.y = sin((m_camOrientation.x) * 3.1415 / 180);
 	m_camLookDirection.z = sin((m_camOrientation.y) * 3.1415 / 180) * cos((m_camOrientation.x) * 3.1415 / 180);
+	
 	m_camLookDirection.Normalize();
 
 	// Calculating the camera right direction
@@ -98,8 +128,13 @@ void Camera::InputHandling(InputCommands m_input, float deltaTime)
 // Update for Camera Class
 void Camera::Update(float deltaTime)
 {
+	////https://asliceofrendering.com/camera/2019/11/30/ArcballCamera/
+	m_mouseLastXPos = m_input.mouseX;
+	m_mouseLastYPos = m_input.mouseY;
+
 	// update the camera position and lookat point
 	Camera::InputHandling(m_input, deltaTime);
+
 }
 
 void Camera::Tick(InputCommands* input)

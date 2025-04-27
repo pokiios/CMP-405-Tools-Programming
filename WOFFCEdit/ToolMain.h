@@ -48,6 +48,6 @@ private:	//variables
 	int m_height;
 	int m_currentChunk;			//the current chunk of thedatabase that we are operating on.  Dictates loading and saving. 
 	
-
+	SceneObject m_currentObject;	//the current object that we are working on.  This is the one that will be selected in the scene graph
 	
 };

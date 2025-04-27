@@ -52,6 +52,10 @@ public:
 	void SaveDisplayChunk(ChunkObject *SceneChunk);	//saves geometry et al
 	void ClearDisplayList();
 	int	 MousePicking();
+	void CopyObject(int id);
+	void PasteObject(int id);
+	DirectX::SimpleMath::Vector3 FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPosition, float offset);
+
 
 #ifdef DXTK_AUDIO
 	void NewAudioDevice();
@@ -72,6 +76,7 @@ private:
 	InputCommands						m_InputCommands;
 	Camera*								m_camera;
 	RECT								m_ScreenDimensions;
+	DisplayObject						clipboardObj;
 
 
 	//control variables
