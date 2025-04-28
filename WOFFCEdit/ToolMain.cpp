@@ -294,6 +294,10 @@ void ToolMain::Tick(MSG *msg)
 	if (m_toolInputCommands.mouseLBDown)
 	{
 		m_selectedObject = m_d3dRenderer.MousePicking();
+		if (m_selectedObject != -1)
+		{
+			m_d3dRenderer.GetObjectPos(m_selectedObject);
+		}
 		m_toolInputCommands.mouseLBDown = false;
 	}
 

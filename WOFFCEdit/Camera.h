@@ -30,6 +30,7 @@ public:
 	void Tick(InputCommands* input);
 	void Update(float deltaTime);
 	void UpdateViewRect(RECT viewRectIn);
+	void LookAtObject(DirectX::SimpleMath::Vector3 objectPos);
 
 	DirectX::SimpleMath::Vector3 GetCameraPos();
 	DirectX::SimpleMath::Matrix GetLookAt();

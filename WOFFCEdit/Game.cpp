@@ -342,6 +342,13 @@ DirectX::SimpleMath::Vector3 Game::FindNextAvailablePosition(DirectX::SimpleMath
 	return finalPos; // Return the final position if it's free
 }
 
+void Game::GetObjectPos(int id)
+{
+	// Return the position of the object in the clipboard
+    DirectX::SimpleMath::Vector3 tempPos = m_displayList[id].m_position;
+	m_camera->LookAtObject(tempPos); // Set the camera position to the object's position
+}
+
 
 void XM_CALLCONV Game::DrawGrid(FXMVECTOR xAxis, FXMVECTOR yAxis, FXMVECTOR origin, size_t xdivs, size_t ydivs, GXMVECTOR color)
 {
