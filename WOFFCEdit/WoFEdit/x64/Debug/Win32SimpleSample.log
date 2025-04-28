@@ -1,10 +1,4 @@
-﻿  Camera.cpp
-D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Camera.cpp(83,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Camera.cpp(84,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Camera.cpp(85,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Camera.cpp(121,27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\Camera.cpp(122,27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  ToolMain.cpp
+﻿  ToolMain.cpp
   _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
 D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\ToolMain.cpp(92,46): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\ToolMain.cpp(93,46): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -34,5 +28,4 @@ D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\ToolMain.cpp(142,56): warning C4244: '=': c
 D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\ToolMain.cpp(143,54): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\ToolMain.cpp(144,57): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\ToolMain.cpp(204,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   Win32SimpleSample.vcxproj -> D:\SCHOOL\WFFC-Edit-master\WOFFCEdit\x64\Debug\WoFEdit.exe

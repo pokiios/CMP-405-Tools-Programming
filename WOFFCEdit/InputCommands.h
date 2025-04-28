@@ -18,4 +18,5 @@ struct InputCommands
 
 	bool copy;
 	bool paste;
+	bool del;
 };

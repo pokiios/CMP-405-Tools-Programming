@@ -315,6 +315,13 @@ void ToolMain::Tick(MSG *msg)
 		m_toolInputCommands.paste = false;
 	}
 
+	if (m_toolInputCommands.del)
+	{
+		// delete the object
+		m_d3dRenderer.DeleteObject(m_selectedObject);
+		m_toolInputCommands.del = false;
+	}
+
 }
 
 void ToolMain::UpdateInput(MSG * msg)
@@ -345,7 +352,6 @@ void ToolMain::UpdateInput(MSG * msg)
 		//mouse right pressed.	
 		m_toolInputCommands.mouseRBDown = true;
 		break;
-
 	}
 	//here we update all the actual app functionality that we want.  This information will either be used int toolmain, or sent down to the renderer (Camera movement etc
 	//WASD movement
@@ -402,4 +408,9 @@ void ToolMain::UpdateInput(MSG * msg)
 		m_toolInputCommands.paste = true;
 	}
 	else m_toolInputCommands.paste = false;
+	if (m_keyArray['X'])
+	{
+		m_toolInputCommands.del = true;
+	}
+	else m_toolInputCommands.del = false;
 }

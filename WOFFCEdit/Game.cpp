@@ -324,6 +324,16 @@ void Game::PasteObject(int id)
     m_displayList.push_back(clipboardObj);
 }
 
+// Deletes the object from the display list
+void Game::DeleteObject(int id)
+{
+	// Remove the object from the display list
+	if (id != -1)
+	{
+        m_displayList.erase(m_displayList.begin() + id);
+	}
+}
+
 // Checks if the position is free before pasting
 DirectX::SimpleMath::Vector3 Game::FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPos, float offset)
 {

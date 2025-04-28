@@ -54,6 +54,7 @@ public:
 	int	 MousePicking();
 	void CopyObject(int id);
 	void PasteObject(int id);
+	void DeleteObject(int id);
 	DirectX::SimpleMath::Vector3 FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPosition, float offset);
 	void GetObjectPos(int id);
 
