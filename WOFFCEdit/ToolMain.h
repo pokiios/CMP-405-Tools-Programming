@@ -20,6 +20,8 @@ public: //methods
 	void	onActionInitialise(HWND handle, int width, int height);			//Passes through handle and hieght and width and initialises DirectX renderer and SQL LITE
 	void	onActionFocusCamera();
 	void	onActionLoad();													//load the current chunk
+	void	onActionCopy();
+	void	onActionPaste();												//copy and paste the current object
 	afx_msg	void	onActionSave();											//save the current chunk
 	afx_msg void	onActionSaveTerrain();									//save chunk geometry
 

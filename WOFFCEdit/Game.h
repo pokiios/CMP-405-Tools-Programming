@@ -55,6 +55,10 @@ public:
 	void CopyObject(int id);
 	void PasteObject(int id);
 	void DeleteObject(int id);
+	void ScaleUp(int id);
+	void ScaleDown(int id);
+	void RotateObject(int id, float angle);
+	void CreateObject();
 	DirectX::SimpleMath::Vector3 FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPosition, float offset);
 	void GetObjectPos(int id);
 

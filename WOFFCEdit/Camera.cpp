@@ -45,11 +45,7 @@ void Camera::InputHandling(InputCommands m_input, float deltaTime)
 	//camera motion is on a plane, so kill the 7 component of the look direction
 	DirectX::SimpleMath::Vector3 planarMotionVector = m_camLookDirection;
 	planarMotionVector.y = 0.0;
-
-	// https://asliceofrendering.com/camera/2019/11/30/ArcballCamera/
 	
-	//Arcball Camera
-	// Rotate camera around pivot is mouse down
 
 	//process input and update rotation
 	if (m_input.rotRight)
@@ -151,10 +147,9 @@ void Camera::UpdateViewRect(RECT viewRectIn)
 // Camera Focuses in on object after being clicked
 void Camera::LookAtObject(DirectX::SimpleMath::Vector3 objectPos)
 {
+	float distance = 5;
+	
 	m_camLookAt = objectPos; // Set the camera lookat point to the object's position
 
-	float distance = 5.0f; // Distance from the object
-
-	// Calculate the camera position based on the lookat point and distance
 	m_camPosition = m_camLookAt - (m_camLookDirection * distance);
 }

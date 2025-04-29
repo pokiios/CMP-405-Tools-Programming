@@ -193,7 +193,7 @@ void Game::Render()
 	//CAMERA POSITION ON HUD
 	m_sprites->Begin();
 	WCHAR   Buffer[256];
-	std::wstring var = L"Cam X: " + std::to_wstring(m_camera->GetCameraPos().x) + L"Cam Z: " + std::to_wstring(m_camera->GetCameraPos().z);
+	std::wstring var = L"Cam X: " + std::to_wstring(m_camera->GetCameraPos().x) + L"Cam Z: " + std::to_wstring(m_camera->GetCameraPos().z) + L" Object Creation Mode: " + std::to_wstring(m_InputCommands.newObject);
 	m_font->DrawString(m_sprites.get(), var.c_str() , XMFLOAT2(100, 10), Colors::Yellow);
 	m_sprites->End();
 
@@ -334,6 +334,51 @@ void Game::DeleteObject(int id)
 	}
 }
 
+// Scales the object up
+void Game::ScaleUp(int id)
+{
+    // Scale the object up
+    if (id != -1 && m_displayList[id].m_scale.x > 0 && m_displayList[id].m_scale.y > 0 && m_displayList[id].m_scale.x > 0)
+    {
+        m_displayList[id].m_scale *= 1.5;
+    }
+}
+
+// Scales the object down
+void Game::ScaleDown(int id)
+{
+	DisplayObject currObj = m_displayList[id]; // Get the object to scale
+	// Scale the object down
+    if (id != -1 && m_displayList[id].m_scale.x > 0 && m_displayList[id].m_scale.y > 0 && m_displayList[id].m_scale.x > 0)
+    {
+        m_displayList[id].m_scale *= 0.5;
+    }
+}
+
+// Rotate Object based on key pressed
+void Game::RotateObject(int id, float angle)
+{
+	// Rotate the object left
+	if (id != -1)
+	{
+        m_displayList[id].m_orientation.y += angle;
+	}
+}
+
+// Creates a new object in the display list
+void Game::CreateObject()
+{
+	// Create a new object and add it to the display list
+	DisplayObject tempObj;
+    tempObj.m_model = Model::CreateFromCMO(m_deviceResources->GetD3DDevice(), L"database/data/placeholder.cmo", *m_fxFactory, true);
+    
+	tempObj.m_orientation = DirectX::SimpleMath::Vector3(0, 0, 0); // Set the orientation to zero
+	tempObj.m_texture_diffuse = nullptr; // Set the texture to null
+    tempObj.m_position = m_camera->GetCameraPos(); // Set the position to the camera's position
+    tempObj.m_scale = DirectX::SimpleMath::Vector3(1, 1, 1);
+    m_displayList.push_back(tempObj);
+}
+
 // Checks if the position is free before pasting
 DirectX::SimpleMath::Vector3 Game::FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPos, float offset)
 {
@@ -356,6 +401,7 @@ void Game::GetObjectPos(int id)
 {
 	// Return the position of the object in the clipboard
     DirectX::SimpleMath::Vector3 tempPos = m_displayList[id].m_position;
+
 	m_camera->LookAtObject(tempPos); // Set the camera position to the object's position
 }
 

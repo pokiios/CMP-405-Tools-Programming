@@ -92,6 +92,16 @@ void MFCMain::MenuFileSaveTerrain()
 	m_ToolSystem.onActionSaveTerrain();
 }
 
+void MFCMain::MenuCopyObject()
+{
+	m_ToolSystem.onActionCopy();
+}
+
+void MFCMain::MenuPasteObject()
+{
+	m_ToolSystem.onActionPaste();
+}
+
 void MFCMain::MenuEditSelect()
 {
 	//SelectDialogue m_ToolSelectDialogue(NULL, &m_ToolSystem.m_sceneGraph);		//create our dialoguebox //modal constructor
@@ -108,7 +118,6 @@ void MFCMain::ToolBarButton1()
 	
 	m_ToolSystem.onActionSave();
 }
-
 
 MFCMain::MFCMain()
 {

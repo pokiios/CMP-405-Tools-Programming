@@ -19,4 +19,12 @@ struct InputCommands
 	bool copy;
 	bool paste;
 	bool del;
+
+	bool scaleUp;
+	bool scaleDown;
+
+	bool rotateObjLeft;
+	bool rotateObjRight;
+
+	bool newObject;
 };
