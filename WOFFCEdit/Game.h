@@ -11,6 +11,7 @@
 #include "DisplayChunk.h"
 #include "ChunkObject.h"
 #include "InputCommands.h"
+#include "Camera.h"
 #include <vector>
 
 
@@ -50,6 +51,17 @@ public:
 	void BuildDisplayChunk(ChunkObject *SceneChunk);
 	void SaveDisplayChunk(ChunkObject *SceneChunk);	//saves geometry et al
 	void ClearDisplayList();
+	int	 MousePicking(int lastID);
+	void CopyObject(int id);
+	void PasteObject(int id);
+	void DeleteObject(int id);
+	void ScaleUp(int id);
+	void ScaleDown(int id);
+	void RotateObject(int id, float angle);
+	void CreateObject();
+	DirectX::SimpleMath::Vector3 FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPosition, float offset);
+	void GetObjectPos(int id);
+
 
 #ifdef DXTK_AUDIO
 	void NewAudioDevice();
@@ -68,17 +80,10 @@ private:
 	std::vector<DisplayObject>			m_displayList;
 	DisplayChunk						m_displayChunk;
 	InputCommands						m_InputCommands;
+	Camera*								m_camera;
+	RECT								m_ScreenDimensions;
+	DisplayObject						clipboardObj;
 
-	//functionality
-	float								m_movespeed;
-
-	//camera
-	DirectX::SimpleMath::Vector3		m_camPosition;
-	DirectX::SimpleMath::Vector3		m_camOrientation;
-	DirectX::SimpleMath::Vector3		m_camLookAt;
-	DirectX::SimpleMath::Vector3		m_camLookDirection;
-	DirectX::SimpleMath::Vector3		m_camRight;
-	float m_camRotRate;
 
 	//control variables
 	bool m_grid;							//grid rendering on / off

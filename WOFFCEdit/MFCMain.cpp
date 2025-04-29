@@ -7,6 +7,8 @@ BEGIN_MESSAGE_MAP(MFCMain, CWinApp)
 	ON_COMMAND(ID_FILE_SAVETERRAIN, &MFCMain::MenuFileSaveTerrain)
 	ON_COMMAND(ID_EDIT_SELECT, &MFCMain::MenuEditSelect)
 	ON_COMMAND(ID_BUTTON40001,	&MFCMain::ToolBarButton1)
+	ON_COMMAND(ID_BUTTON40010, &MFCMain::MenuCopyObject)
+	ON_COMMAND(ID_BUTTON40011, &MFCMain::MenuPasteObject)
 	ON_UPDATE_COMMAND_UI(ID_INDICATOR_TOOL, &CMyFrame::OnUpdatePage)
 END_MESSAGE_MAP()
 
@@ -92,6 +94,16 @@ void MFCMain::MenuFileSaveTerrain()
 	m_ToolSystem.onActionSaveTerrain();
 }
 
+void MFCMain::MenuCopyObject()
+{
+	m_ToolSystem.onActionCopy();
+}
+
+void MFCMain::MenuPasteObject()
+{
+	m_ToolSystem.onActionPaste();
+}
+
 void MFCMain::MenuEditSelect()
 {
 	//SelectDialogue m_ToolSelectDialogue(NULL, &m_ToolSystem.m_sceneGraph);		//create our dialoguebox //modal constructor
@@ -108,7 +120,6 @@ void MFCMain::ToolBarButton1()
 	
 	m_ToolSystem.onActionSave();
 }
-
 
 MFCMain::MFCMain()
 {

@@ -18,6 +18,8 @@ ToolMain::ToolMain()
 	m_toolInputCommands.back		= false;
 	m_toolInputCommands.left		= false;
 	m_toolInputCommands.right		= false;
+	m_toolInputCommands.newObject	= false;
+
 	
 }
 
@@ -289,9 +291,67 @@ void ToolMain::Tick(MSG *msg)
 
 	//Renderer Update Call
 	m_d3dRenderer.Tick(&m_toolInputCommands);
+
+	if (m_toolInputCommands.mouseLBDown)
+	{
+		m_selectedObject = m_d3dRenderer.MousePicking(m_selectedObject);
+		if (m_selectedObject != -1)
+		{
+			m_d3dRenderer.GetObjectPos(m_selectedObject);
+		}
+
+		if (m_toolInputCommands.newObject)
+		{
+			//create a new object
+			m_d3dRenderer.CreateObject();
+		}
+
+		m_toolInputCommands.mouseLBDown = false;
+	}
+
+	if (m_toolInputCommands.copy)
+	{
+		// copy the object
+		onActionCopy();
+		m_toolInputCommands.copy = false;
+	}
+
+	if (m_toolInputCommands.paste)
+	{
+		// paste the object
+		onActionPaste();
+		m_toolInputCommands.paste = false;
+	}
+
+	if (m_toolInputCommands.del)
+	{
+		// delete the object
+		m_d3dRenderer.DeleteObject(m_selectedObject);
+		m_toolInputCommands.del = false;
+	}
+	if (m_toolInputCommands.scaleUp)
+	{
+		m_d3dRenderer.ScaleUp(m_selectedObject);
+		m_toolInputCommands.scaleUp = false;
+	}
+	if (m_toolInputCommands.scaleDown)
+	{
+		m_d3dRenderer.ScaleDown(m_selectedObject);
+		m_toolInputCommands.scaleDown = false;
+	}
+	if (m_toolInputCommands.rotateObjLeft)
+	{
+		m_d3dRenderer.RotateObject(m_selectedObject, 15);
+		m_toolInputCommands.rotateObjLeft = false;
+	}
+	if (m_toolInputCommands.rotateObjRight)
+	{
+		m_d3dRenderer.RotateObject(m_selectedObject, -15);
+		m_toolInputCommands.rotateObjRight = false;
+	}
 }
 
-void ToolMain::UpdateInput(MSG * msg)
+void ToolMain::UpdateInput(MSG* msg)
 {
 
 	switch (msg->message)
@@ -306,13 +366,22 @@ void ToolMain::UpdateInput(MSG * msg)
 		break;
 
 	case WM_MOUSEMOVE:
+		// mouse moved
+		m_toolInputCommands.mouseX = GET_X_LPARAM(msg->lParam);
+		m_toolInputCommands.mouseY = GET_Y_LPARAM(msg->lParam);
 		break;
 
-	case WM_LBUTTONDOWN:	//mouse button down,  you will probably need to check when its up too
-		//set some flag for the mouse button in inputcommands
+	case WM_LBUTTONDOWN:
+		//mouse left pressed.	
+		m_toolInputCommands.mouseLBDown = true;
 		break;
-
+	case WM_RBUTTONDOWN:
+		//mouse right pressed.	
+		m_toolInputCommands.mouseRBDown = true;
+		break;
 	}
+
+
 	//here we update all the actual app functionality that we want.  This information will either be used int toolmain, or sent down to the renderer (Camera movement etc
 	//WASD movement
 	if (m_keyArray['W'])
@@ -348,6 +417,65 @@ void ToolMain::UpdateInput(MSG * msg)
 		m_toolInputCommands.rotLeft = true;
 	}
 	else m_toolInputCommands.rotLeft = false;
+	if (m_keyArray['O'])
+	{
+		m_toolInputCommands.rotUp = true;
+	}
+	else m_toolInputCommands.rotUp = false;
+	if (m_keyArray['P'])
+	{
+		m_toolInputCommands.rotDown = true;
+	}
+	else m_toolInputCommands.rotDown = false;
+	if (m_keyArray['C'])
+	{
+		m_toolInputCommands.copy = true;
+	}
+	else m_toolInputCommands.copy = false;
+	if (m_keyArray['V'])
+	{
+		m_toolInputCommands.paste = true;
+	}
+	else m_toolInputCommands.paste = false;
+	if (m_keyArray['X'])
+	{
+		m_toolInputCommands.del = true;
+	}
+	else m_toolInputCommands.del = false;
+	if (m_keyArray['L'])
+	{
+		m_toolInputCommands.scaleUp = true;
+	}
+	else m_toolInputCommands.scaleUp = false;
+	if (m_keyArray['K'])
+	{
+		m_toolInputCommands.scaleDown = true;
+	}
+	else m_toolInputCommands.scaleDown = false;
+	if (m_keyArray['G'])
+	{
+		m_toolInputCommands.rotateObjLeft = true;
+	}
+	else m_toolInputCommands.rotateObjLeft = false;
+	if (m_keyArray['H'])
+	{
+		m_toolInputCommands.rotateObjRight = true;
+	}
+	else m_toolInputCommands.rotateObjRight = false;
+	// Toggle Required
+	if (m_keyArray['N'])
+	{
+		m_toolInputCommands.newObject = !m_toolInputCommands.newObject;
+	}
+}
 
-	//WASD
+void ToolMain::onActionCopy()
+{
+	m_d3dRenderer.CopyObject(m_selectedObject);
+}
+
+void ToolMain::onActionPaste()
+{
+	//paste the object
+	m_d3dRenderer.PasteObject(m_selectedObject);
 }

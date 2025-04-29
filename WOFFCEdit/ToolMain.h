@@ -20,6 +20,8 @@ public: //methods
 	void	onActionInitialise(HWND handle, int width, int height);			//Passes through handle and hieght and width and initialises DirectX renderer and SQL LITE
 	void	onActionFocusCamera();
 	void	onActionLoad();													//load the current chunk
+	void	onActionCopy();
+	void	onActionPaste();												//copy and paste the current object
 	afx_msg	void	onActionSave();											//save the current chunk
 	afx_msg void	onActionSaveTerrain();									//save chunk geometry
 
@@ -48,6 +50,6 @@ private:	//variables
 	int m_height;
 	int m_currentChunk;			//the current chunk of thedatabase that we are operating on.  Dictates loading and saving. 
 	
-
-	
+	SceneObject m_currentObject;	//the current object that we are working on.  This is the one that will be selected in the scene graph
+	DirectX::SimpleMath::Vector3 currentObjPos; // position of the current object
 };
