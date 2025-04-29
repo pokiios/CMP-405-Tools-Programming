@@ -68,6 +68,7 @@ void Game::Initialize(HWND window, int width, int height)
     m_deviceResources->CreateWindowSizeDependentResources();
     CreateWindowSizeDependentResources();
     GetClientRect(window, &m_ScreenDimensions);
+	m_camera->UpdateViewRect(m_ScreenDimensions);	//pass the window dimensions to the camera for view calculations
 
 #ifdef DXTK_AUDIO
     // Create DirectXTK for Audio objects
@@ -341,47 +342,38 @@ void Game::DeleteObject(int id)
 }
 
 // Scales the object up
-void Game::ScaleObject(int id, float scaleValue)
+void Game::ScaleObject(int id, float scaleX, float scaleY, float scaleZ)
 {
     // Scale the object up
     if (id != -1 && m_displayList[id].m_scale.x > 0 && m_displayList[id].m_scale.y > 0 && m_displayList[id].m_scale.x > 0)
     {
-        m_displayList[id].m_scale *= scaleValue;
+		m_displayList[id].m_scale.x *= scaleX;
+		m_displayList[id].m_scale.y *= scaleY;
+		m_displayList[id].m_scale.z *= scaleZ;
     }
 }
 
 // Rotate Object based on key pressed
-void Game::RotateObject(int id, float angle)
+void Game::RotateObject(int id, float angleX, float angleY, float angleZ)
 {
 	// Rotate the object left
 	if (id != -1)
 	{
-        m_displayList[id].m_orientation.y += angle;
+		m_displayList[id].m_orientation.x += angleX;
+		m_displayList[id].m_orientation.y += angleY;
+		m_displayList[id].m_orientation.z += angleZ;
 	}
 }
 
 // Moves the object to a new position
-void Game::MoveObject(int id, int dir, float offset)
+void Game::MoveObject(int id, float dirX, float dirY, float dirZ)
 {
 	// Move the object to a new position
 	if (id != -1)
 	{
-        // Switch case based on direction
-        switch (dir)
-        {
-        case 1:
-            m_displayList[id].m_position.x -= offset; // Move Left
-            break;
-        case 2:
-            m_displayList[id].m_position.x += offset; // Move Right
-            break;
-        case 3:
-            m_displayList[id].m_position.z -= offset; // Move Up
-            break;
-        case 4:
-            m_displayList[id].m_position.z += offset; // Move down
-            break;
-        }
+		m_displayList[id].m_position.x += dirX;
+		m_displayList[id].m_position.y += dirY;
+		m_displayList[id].m_position.z += dirZ;
 	}
 }
 

@@ -18,7 +18,7 @@ public: //methods
 	//onAction - These are the interface to MFC
 	int		getCurrentSelectionID();										//returns the selection number of currently selected object so that It can be displayed.
 	void	onActionInitialise(HWND handle, int width, int height);			//Passes through handle and hieght and width and initialises DirectX renderer and SQL LITE
-	void	onActionFocusCamera();
+	void	onActionFocusCamera();											// focus the camera on the current object
 	void	onActionLoad();													//load the current chunk
 	void	onActionCopy();
 	void	onActionPaste();												//copy and paste the current object

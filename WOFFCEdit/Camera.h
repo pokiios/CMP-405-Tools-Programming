@@ -20,8 +20,8 @@ private:
 	float m_mouseSens; // mouse sensitivity
 	float m_deltaX; 
 	float m_deltaY; 
-	float middleScreenX;
-	float middleScreenY;
+	long middleScreenX;
+	long middleScreenY;
 
 	
 public:

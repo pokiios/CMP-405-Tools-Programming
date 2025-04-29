@@ -21,6 +21,8 @@ class Game : public DX::IDeviceNotify
 {
 public:
 
+	Camera* m_camera;
+
 	Game();
 	~Game();
 
@@ -55,10 +57,9 @@ public:
 	void CopyObject(int id);
 	void PasteObject(int id);
 	void DeleteObject(int id);
-	void ScaleObject(int id, float scaleValue);
-	void RotateObject(int id, float angle);
-	void MoveObject(int id, int direction, float offset);
-	void MoveObject(int id, DirectX::SimpleMath::Vector3 newPos);
+	void ScaleObject(int id, float scaleX, float scaleY, float scaleZ);
+	void RotateObject(int id, float angleX, float angleY, float angleZ);
+	void MoveObject(int id, float dirX, float dirY, float dirZ);
 	void CreateObject();
 	DirectX::SimpleMath::Vector3 FindNextAvailablePosition(DirectX::SimpleMath::Vector3 finalPosition, float offset);
 	void GetObjectPos(int id);
@@ -81,7 +82,6 @@ private:
 	std::vector<DisplayObject>			m_displayList;
 	DisplayChunk						m_displayChunk;
 	InputCommands						m_InputCommands;
-	Camera*								m_camera;
 	RECT								m_ScreenDimensions;
 	DisplayObject						clipboardObj;
 

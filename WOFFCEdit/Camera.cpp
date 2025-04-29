@@ -2,10 +2,11 @@
 
 Camera::Camera()
 {
-	m_viewDimensions = { 0, 0, 0, 0 }; // Initialize the view dimensions
+
+	m_viewDimensions = { 0, 0, 0, 0 }; // Initialize the view dimensions to zero
 
 	//functional (Taken from Game.cpp)
-	m_movespeed = 50.0f;
+	m_movespeed = 30.0f;
 	m_camRotRate = 1.5f;
 
 	//camera
@@ -33,8 +34,6 @@ Camera::Camera()
 	m_camOrientation.y = 0.0f;
 	m_camOrientation.z = 0.0f;
 
-	middleScreenX = m_viewDimensions.right / 2; // Calculate the middle of the screen (Width)
-	middleScreenY = m_viewDimensions.bottom / 2; // Calculate the middle of the screen (Height)
 }
 
 // Destructor
@@ -45,7 +44,8 @@ Camera::~Camera()
 
 void Camera::Initialise(HWND window)
 {
-	m_window = window; // Store the window 
+
+	m_window = window; // Store the window handle
 
 }
 
@@ -55,14 +55,9 @@ void Camera::InputHandling(InputCommands m_input, float deltaTime)
 	DirectX::SimpleMath::Vector3 planarMotionVector = m_camLookDirection;
 	planarMotionVector.y = 0.0;
 
-	//move camera based on mouse rotation
-	if (m_input.mouseFocus)
-	{
-		m_camOrientation.y += m_deltaX * m_camRotRate * deltaTime;
-		m_camOrientation.x -= m_deltaY * m_camRotRate * deltaTime;
-	}
-	else
-	{
+	m_deltaX = m_input.mouseX - middleScreenX;
+	m_deltaY = m_input.mouseY - middleScreenY;
+
 		//process input and update rotation
 		if (m_input.rotRight)
 		{
@@ -80,7 +75,6 @@ void Camera::InputHandling(InputCommands m_input, float deltaTime)
 		{
 			m_camOrientation.x -= m_camRotRate;
 		}
-	}
 	
 
 	// Calculating the camera look direction
@@ -122,20 +116,20 @@ void Camera::Update(float deltaTime)
 	m_camOrientation.x = std::min(m_camOrientation.x, 89.f);
 	m_camOrientation.x = std::max(m_camOrientation.x, -89.f);
 
-	m_deltaX = m_input.mouseX - m_viewDimensions.right;
-	m_deltaY = m_input.mouseY - m_viewDimensions.bottom;
-
 	// update the camera position and lookat point
 	Camera::InputHandling(m_input, deltaTime);
 
 	// Check if mouse is focused for first person movement
 	if (m_input.mouseFocus)
 	{
-		screenCenter.x = m_viewDimensions.right / 2; // Calculate the middle of the screen (Width)
-		screenCenter.y = m_viewDimensions.bottom / 2; // Calculate the middle of the screen (Height)
+		middleScreenX = m_viewDimensions.right / 2; // Calculate the middle of the screen (Width)
+		middleScreenY = m_viewDimensions.bottom / 2; // Calculate the middle of the screen (Height)
 
-		ClientToScreen(m_window, &screenCenter); // Convert the window coordinations to screen coordinates
+		screenCenter = { middleScreenX, middleScreenY }; // Set the screen center to the middle of the screen
+
+		
 		SetCursorPos(middleScreenX, middleScreenY); // Set the cursor position to the middle of the screen
+		ClientToScreen(m_window, &screenCenter); // Convert the window coordinations to screen coordinates
 		ShowCursor(false); // Hide the cursor
 	}
 	else

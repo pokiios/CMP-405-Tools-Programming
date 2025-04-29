@@ -19,7 +19,7 @@ ToolMain::ToolMain()
 	m_toolInputCommands.left		= false;
 	m_toolInputCommands.right		= false;
 	m_toolInputCommands.newObject	= false;
-
+	m_toolInputCommands.mouseFocus	= false;
 	
 }
 
@@ -327,46 +327,47 @@ void ToolMain::Tick(MSG *msg)
 	{
 		// delete the object
 		m_d3dRenderer.DeleteObject(m_selectedObject);
+		m_selectedObject = -1;
 		m_toolInputCommands.del = false;
 	}
 	if (m_toolInputCommands.scaleUp)
 	{
-		m_d3dRenderer.ScaleObject(m_selectedObject, 1.5f);
+		m_d3dRenderer.ScaleObject(m_selectedObject, 1.5, 1.5, 1.5);
 		m_toolInputCommands.scaleUp = false;
 	}
 	if (m_toolInputCommands.scaleDown)
 	{
-		m_d3dRenderer.ScaleObject(m_selectedObject, 0.5f);
+		m_d3dRenderer.ScaleObject(m_selectedObject, 0.5, 0.5, 0.5);
 		m_toolInputCommands.scaleDown = false;
 	}
 	if (m_toolInputCommands.rotateObjLeft)
 	{
-		m_d3dRenderer.RotateObject(m_selectedObject, 15);
+		m_d3dRenderer.RotateObject(m_selectedObject, 0, 15, 0);
 		m_toolInputCommands.rotateObjLeft = false;
 	}
 	if (m_toolInputCommands.rotateObjRight)
 	{
-		m_d3dRenderer.RotateObject(m_selectedObject, -15);
+		m_d3dRenderer.RotateObject(m_selectedObject, 0, -15, 0);
 		m_toolInputCommands.rotateObjRight = false;
 	}
 	if (m_toolInputCommands.moveObjUp)
 	{
-		m_d3dRenderer.MoveObject(m_selectedObject, 1, 0.5f);
+		m_d3dRenderer.MoveObject(m_selectedObject, 0, 0, 0.5);
 		m_toolInputCommands.moveObjUp = false;
 	}
 	if (m_toolInputCommands.moveObjDown)
 	{
-		m_d3dRenderer.MoveObject(m_selectedObject, 2, 0.5f);
+		m_d3dRenderer.MoveObject(m_selectedObject, 0, 0, -0.5);
 		m_toolInputCommands.moveObjDown = false;
 	}
 	if (m_toolInputCommands.moveObjLeft)
 	{
-		m_d3dRenderer.MoveObject(m_selectedObject, 3, 0.5f);
+		m_d3dRenderer.MoveObject(m_selectedObject, -0.5, 0, 0);
 		m_toolInputCommands.moveObjLeft = false;
 	}
 	if (m_toolInputCommands.moveObjRight)
 	{
-		m_d3dRenderer.MoveObject(m_selectedObject, 4, 0.5f);
+		m_d3dRenderer.MoveObject(m_selectedObject, 0.5, 0, 0);
 		m_toolInputCommands.moveObjRight = false;
 	}
 }
@@ -417,8 +418,29 @@ void ToolMain::UpdateInput(MSG* msg)
 	case VK_RIGHT:
 		m_toolInputCommands.moveObjRight = true;
 		break;
+
 	case VK_TAB:
 		m_toolInputCommands.mouseFocus = !m_toolInputCommands.mouseFocus;
+		break;
+
+	case VK_DELETE:
+		m_toolInputCommands.del = true;
+		break;
+
+	case VK_OEM_4:
+		m_toolInputCommands.rotateObjLeft = true;
+		break;
+
+	case VK_OEM_6:
+		m_toolInputCommands.rotateObjRight = true;
+		break;
+
+	case VK_OEM_MINUS:
+		m_toolInputCommands.scaleDown = true;
+		break;
+
+	case VK_OEM_PLUS:
+		m_toolInputCommands.scaleUp = true;
 		break;
 	}
 
@@ -477,21 +499,6 @@ void ToolMain::UpdateInput(MSG* msg)
 		m_toolInputCommands.paste = true;
 	}
 	else m_toolInputCommands.paste = false;
-	if (m_keyArray['X'])
-	{
-		m_toolInputCommands.del = true;
-	}
-	else m_toolInputCommands.del = false;
-	if (m_keyArray['L'])
-	{
-		m_toolInputCommands.scaleUp = true;
-	}
-	else m_toolInputCommands.scaleUp = false;
-	if (m_keyArray['K'])
-	{
-		m_toolInputCommands.scaleDown = true;
-	}
-	else m_toolInputCommands.scaleDown = false;
 	if (m_keyArray['G'])
 	{
 		m_toolInputCommands.rotateObjLeft = true;
@@ -507,6 +514,25 @@ void ToolMain::UpdateInput(MSG* msg)
 	{
 		m_toolInputCommands.newObject = !m_toolInputCommands.newObject;
 	}
+	if (m_keyArray['K'])
+	{
+		m_toolInputCommands.scaleDown = true;
+	}
+	else m_toolInputCommands.scaleDown = false;
+	if (m_keyArray['L'])
+	{
+		m_toolInputCommands.scaleUp = true;
+	}
+	else m_toolInputCommands.scaleUp = false;
+	if (m_keyArray['X'])
+	{
+		m_toolInputCommands.del = true;
+	}
+	else m_toolInputCommands.del = false;
+	if (m_keyArray['F'])
+	{
+		m_toolInputCommands.mouseFocus = !m_toolInputCommands.mouseFocus;
+	}
 }
 
 void ToolMain::onActionCopy()
@@ -518,4 +544,11 @@ void ToolMain::onActionPaste()
 {
 	//paste the object
 	m_d3dRenderer.PasteObject(m_selectedObject);
+}
+
+void ToolMain::onActionFocusCamera()
+{
+	//focus the camera on the current object
+	DirectX::SimpleMath::Vector3 tempPos = DirectX::SimpleMath::Vector3(m_sceneGraph.at(m_selectedObject).posX, m_sceneGraph.at(m_selectedObject).posY, m_sceneGraph.at(m_selectedObject).posZ);
+	m_d3dRenderer.m_camera->LookAtObject(tempPos);
 }
