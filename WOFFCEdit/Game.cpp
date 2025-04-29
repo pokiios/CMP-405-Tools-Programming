@@ -251,9 +251,11 @@ void Game::Clear()
     m_deviceResources->PIXEndEvent();
 }
 
-int Game::MousePicking()
+int Game::MousePicking(int lastID)
 {
-    int selectedID = -1;
+
+
+    int selectedID = lastID;
     float pickedDistance = 0;
 	float closestDistance = D3D10_FLOAT32_MAX; // Set to max float value
 
@@ -318,10 +320,13 @@ void Game::CopyObject(int id)
 // Pastes the object from clipboard to display list
 void Game::PasteObject(int id)
 {
-    // Find new position based on the current clipboard object and an offset
-	DirectX::SimpleMath::Vector3 finalPosition = FindNextAvailablePosition(clipboardObj.m_position, 5); 
-    clipboardObj.m_position = finalPosition;
-    m_displayList.push_back(clipboardObj);
+    if (id != -1)
+    {
+        // Find new position based on the current clipboard object and an offset
+        DirectX::SimpleMath::Vector3 finalPosition = FindNextAvailablePosition(clipboardObj.m_position, 5);
+        clipboardObj.m_position = finalPosition;
+        m_displayList.push_back(clipboardObj);
+    }
 }
 
 // Deletes the object from the display list

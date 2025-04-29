@@ -51,7 +51,7 @@ public:
 	void BuildDisplayChunk(ChunkObject *SceneChunk);
 	void SaveDisplayChunk(ChunkObject *SceneChunk);	//saves geometry et al
 	void ClearDisplayList();
-	int	 MousePicking();
+	int	 MousePicking(int lastID);
 	void CopyObject(int id);
 	void PasteObject(int id);
 	void DeleteObject(int id);
