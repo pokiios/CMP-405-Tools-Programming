@@ -331,12 +331,12 @@ void ToolMain::Tick(MSG *msg)
 	}
 	if (m_toolInputCommands.scaleUp)
 	{
-		m_d3dRenderer.ScaleUp(m_selectedObject);
+		m_d3dRenderer.ScaleObject(m_selectedObject, 1.5f);
 		m_toolInputCommands.scaleUp = false;
 	}
 	if (m_toolInputCommands.scaleDown)
 	{
-		m_d3dRenderer.ScaleDown(m_selectedObject);
+		m_d3dRenderer.ScaleObject(m_selectedObject, 0.5f);
 		m_toolInputCommands.scaleDown = false;
 	}
 	if (m_toolInputCommands.rotateObjLeft)
@@ -348,6 +348,26 @@ void ToolMain::Tick(MSG *msg)
 	{
 		m_d3dRenderer.RotateObject(m_selectedObject, -15);
 		m_toolInputCommands.rotateObjRight = false;
+	}
+	if (m_toolInputCommands.moveObjUp)
+	{
+		m_d3dRenderer.MoveObject(m_selectedObject, 1, 0.5f);
+		m_toolInputCommands.moveObjUp = false;
+	}
+	if (m_toolInputCommands.moveObjDown)
+	{
+		m_d3dRenderer.MoveObject(m_selectedObject, 2, 0.5f);
+		m_toolInputCommands.moveObjDown = false;
+	}
+	if (m_toolInputCommands.moveObjLeft)
+	{
+		m_d3dRenderer.MoveObject(m_selectedObject, 3, 0.5f);
+		m_toolInputCommands.moveObjLeft = false;
+	}
+	if (m_toolInputCommands.moveObjRight)
+	{
+		m_d3dRenderer.MoveObject(m_selectedObject, 4, 0.5f);
+		m_toolInputCommands.moveObjRight = false;
 	}
 }
 
@@ -375,12 +395,29 @@ void ToolMain::UpdateInput(MSG* msg)
 		//mouse left pressed.	
 		m_toolInputCommands.mouseLBDown = true;
 		break;
+
 	case WM_RBUTTONDOWN:
 		//mouse right pressed.	
 		m_toolInputCommands.mouseRBDown = true;
 		break;
-	}
 
+	// Arrow Keys
+	case VK_UP:
+		m_toolInputCommands.moveObjUp = true;
+		break;
+
+	case VK_DOWN:
+		m_toolInputCommands.moveObjDown = true;
+		break;
+
+	case VK_LEFT:
+		m_toolInputCommands.moveObjLeft = true;
+		break;
+
+	case VK_RIGHT:
+		m_toolInputCommands.moveObjRight = true;
+		break;
+	}
 
 	//here we update all the actual app functionality that we want.  This information will either be used int toolmain, or sent down to the renderer (Camera movement etc
 	//WASD movement

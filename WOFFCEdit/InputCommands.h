@@ -27,4 +27,9 @@ struct InputCommands
 	bool rotateObjRight;
 
 	bool newObject;
+
+	bool moveObjLeft;
+	bool moveObjRight;
+	bool moveObjUp;
+	bool moveObjDown;
 };

@@ -254,7 +254,6 @@ void Game::Clear()
 int Game::MousePicking(int lastID)
 {
 
-
     int selectedID = lastID;
     float pickedDistance = 0;
 	float closestDistance = D3D10_FLOAT32_MAX; // Set to max float value
@@ -307,7 +306,7 @@ int Game::MousePicking(int lastID)
     return selectedID;
 }
 
-// Clears the display list
+// Copies the object to the clipboard
 void Game::CopyObject(int id)
 {
     // Copy object ID to clipboard
@@ -340,23 +339,12 @@ void Game::DeleteObject(int id)
 }
 
 // Scales the object up
-void Game::ScaleUp(int id)
+void Game::ScaleObject(int id, float scaleValue)
 {
     // Scale the object up
     if (id != -1 && m_displayList[id].m_scale.x > 0 && m_displayList[id].m_scale.y > 0 && m_displayList[id].m_scale.x > 0)
     {
-        m_displayList[id].m_scale *= 1.5;
-    }
-}
-
-// Scales the object down
-void Game::ScaleDown(int id)
-{
-	DisplayObject currObj = m_displayList[id]; // Get the object to scale
-	// Scale the object down
-    if (id != -1 && m_displayList[id].m_scale.x > 0 && m_displayList[id].m_scale.y > 0 && m_displayList[id].m_scale.x > 0)
-    {
-        m_displayList[id].m_scale *= 0.5;
+        m_displayList[id].m_scale *= scaleValue;
     }
 }
 
@@ -367,6 +355,31 @@ void Game::RotateObject(int id, float angle)
 	if (id != -1)
 	{
         m_displayList[id].m_orientation.y += angle;
+	}
+}
+
+// Moves the object to a new position
+void Game::MoveObject(int id, int dir, float offset)
+{
+	// Move the object to a new position
+	if (id != -1)
+	{
+        // Switch case based on direction
+        switch (dir)
+        {
+        case 1:
+            m_displayList[id].m_position.x -= offset; // Move Left
+            break;
+        case 2:
+            m_displayList[id].m_position.x += offset; // Move Right
+            break;
+        case 3:
+            m_displayList[id].m_position.z -= offset; // Move Up
+            break;
+        case 4:
+            m_displayList[id].m_position.z += offset; // Move down
+            break;
+        }
 	}
 }
 
