@@ -58,6 +58,8 @@ void Game::Initialize(HWND window, int width, int height)
     m_mouse = std::make_unique<Mouse>();
     m_mouse->SetWindow(window);
 
+	m_camera->Initialise(window);	//pass the window handle to the camera for mouse input
+
     m_deviceResources->SetWindow(window, width, height);
 
     m_deviceResources->CreateDeviceResources();
@@ -694,7 +696,6 @@ void Game::CreateWindowSizeDependentResources()
     );
 
     m_batchEffect->SetProjection(m_projection);
-	
 }
 
 void Game::OnDeviceLost()

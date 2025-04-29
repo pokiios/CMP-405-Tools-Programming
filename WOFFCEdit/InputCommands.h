@@ -15,6 +15,7 @@ struct InputCommands
 	int mouseY;
 	bool mouseLBDown;
 	bool mouseRBDown;
+	bool mouseFocus;
 
 	bool copy;
 	bool paste;

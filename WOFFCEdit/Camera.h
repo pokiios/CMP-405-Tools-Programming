@@ -18,14 +18,17 @@ private:
 	float m_camRotRate; // camera rotation rate
 	float m_movespeed; // camera movement speed
 	float m_mouseSens; // mouse sensitivity
-	float m_mouseLastYPos; // last Y position of the mouse
-	float m_mouseLastXPos; // last X position of the mouse
+	float m_deltaX; 
+	float m_deltaY; 
+	float middleScreenX;
+	float middleScreenY;
 
 	
 public:
 	Camera(); // Constructor
 	~Camera(); // Destructor
 
+	void Initialise(HWND hwnd);
 	void InputHandling(InputCommands m_input, float deltaTime);
 	void Tick(InputCommands* input);
 	void Update(float deltaTime);
@@ -34,6 +37,9 @@ public:
 
 	DirectX::SimpleMath::Vector3 GetCameraPos();
 	DirectX::SimpleMath::Matrix GetLookAt();
+
+	HWND m_window;
+	POINT screenCenter;
 
 	InputCommands m_input;
 

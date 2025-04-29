@@ -32,6 +32,9 @@ Camera::Camera()
 	m_camOrientation.x = 0.0f;
 	m_camOrientation.y = 0.0f;
 	m_camOrientation.z = 0.0f;
+
+	middleScreenX = m_viewDimensions.right / 2; // Calculate the middle of the screen (Width)
+	middleScreenY = m_viewDimensions.bottom / 2; // Calculate the middle of the screen (Height)
 }
 
 // Destructor
@@ -40,40 +43,45 @@ Camera::~Camera()
 
 }
 
+void Camera::Initialise(HWND window)
+{
+	m_window = window; // Store the window 
+
+}
+
 void Camera::InputHandling(InputCommands m_input, float deltaTime)
 {
 	//camera motion is on a plane, so kill the 7 component of the look direction
 	DirectX::SimpleMath::Vector3 planarMotionVector = m_camLookDirection;
 	planarMotionVector.y = 0.0;
+
+	//move camera based on mouse rotation
+	if (m_input.mouseFocus)
+	{
+		m_camOrientation.y += m_deltaX * m_camRotRate * deltaTime;
+		m_camOrientation.x -= m_deltaY * m_camRotRate * deltaTime;
+	}
+	else
+	{
+		//process input and update rotation
+		if (m_input.rotRight)
+		{
+			m_camOrientation.y += m_camRotRate;
+		}
+		if (m_input.rotLeft)
+		{
+			m_camOrientation.y -= m_camRotRate;
+		}
+		if (m_input.rotUp)
+		{
+			m_camOrientation.x += m_camRotRate;
+		}
+		if (m_input.rotDown)
+		{
+			m_camOrientation.x -= m_camRotRate;
+		}
+	}
 	
-
-	//process input and update rotation
-	if (m_input.rotRight)
-	{
-		m_camOrientation.y += m_camRotRate;
-	}
-	if (m_input.rotLeft)
-	{
-		m_camOrientation.y -= m_camRotRate;
-	}
-	if (m_input.rotUp)
-	{
-		m_camOrientation.x += m_camRotRate;
-	}
-	if (m_input.rotDown)
-	{
-		m_camOrientation.x -= m_camRotRate;
-	}
-
-	// Quick fix Clamp the camera orientation
-	if (m_camOrientation.x > 89.0f)
-	{
-		m_camOrientation.x = 89.0f;
-	}
-	if (m_camOrientation.x < -89.0f)
-	{
-		m_camOrientation.x = -89.0f;
-	}
 
 	// Calculating the camera look direction
 	m_camLookDirection.x = cos((m_camOrientation.y) * 3.1415 / 180) * cos((m_camOrientation.x) * 3.1415 / 180);
@@ -114,11 +122,26 @@ void Camera::Update(float deltaTime)
 	m_camOrientation.x = std::min(m_camOrientation.x, 89.f);
 	m_camOrientation.x = std::max(m_camOrientation.x, -89.f);
 
-	m_mouseLastXPos = m_input.mouseX;
-	m_mouseLastYPos = m_input.mouseY;
+	m_deltaX = m_input.mouseX - m_viewDimensions.right;
+	m_deltaY = m_input.mouseY - m_viewDimensions.bottom;
 
 	// update the camera position and lookat point
 	Camera::InputHandling(m_input, deltaTime);
+
+	// Check if mouse is focused for first person movement
+	if (m_input.mouseFocus)
+	{
+		screenCenter.x = m_viewDimensions.right / 2; // Calculate the middle of the screen (Width)
+		screenCenter.y = m_viewDimensions.bottom / 2; // Calculate the middle of the screen (Height)
+
+		ClientToScreen(m_window, &screenCenter); // Convert the window coordinations to screen coordinates
+		SetCursorPos(middleScreenX, middleScreenY); // Set the cursor position to the middle of the screen
+		ShowCursor(false); // Hide the cursor
+	}
+	else
+	{
+		ShowCursor(true); // Show the cursor
+	}
 
 }
 

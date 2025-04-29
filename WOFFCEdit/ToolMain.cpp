@@ -417,6 +417,9 @@ void ToolMain::UpdateInput(MSG* msg)
 	case VK_RIGHT:
 		m_toolInputCommands.moveObjRight = true;
 		break;
+	case VK_TAB:
+		m_toolInputCommands.mouseFocus = !m_toolInputCommands.mouseFocus;
+		break;
 	}
 
 	//here we update all the actual app functionality that we want.  This information will either be used int toolmain, or sent down to the renderer (Camera movement etc
