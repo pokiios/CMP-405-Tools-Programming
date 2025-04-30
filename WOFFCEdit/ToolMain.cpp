@@ -303,6 +303,7 @@ void ToolMain::Tick(MSG *msg)
 		if (m_toolInputCommands.newObject)
 		{
 			//create a new object
+			m_selectedObject = -1;
 			m_d3dRenderer.CreateObject();
 		}
 
