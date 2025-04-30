@@ -37,6 +37,7 @@ private:
 	afx_msg void MenuEditSelect();
 	afx_msg void MenuCopyObject();
 	afx_msg void MenuPasteObject();
+	afx_msg void MenuFocusCamera();
 	afx_msg	void ToolBarButton1();
 
 

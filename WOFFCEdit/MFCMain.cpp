@@ -9,6 +9,7 @@ BEGIN_MESSAGE_MAP(MFCMain, CWinApp)
 	ON_COMMAND(ID_BUTTON40001,	&MFCMain::ToolBarButton1)
 	ON_COMMAND(ID_BUTTON40010, &MFCMain::MenuCopyObject)
 	ON_COMMAND(ID_BUTTON40011, &MFCMain::MenuPasteObject)
+	ON_COMMAND(ID_BUTTON40013, &MFCMain::MenuFocusCamera)
 	ON_UPDATE_COMMAND_UI(ID_INDICATOR_TOOL, &CMyFrame::OnUpdatePage)
 END_MESSAGE_MAP()
 
@@ -102,6 +103,11 @@ void MFCMain::MenuCopyObject()
 void MFCMain::MenuPasteObject()
 {
 	m_ToolSystem.onActionPaste();
+}
+
+void MFCMain::MenuFocusCamera()
+{
+	m_ToolSystem.onActionFocusCamera();
 }
 
 void MFCMain::MenuEditSelect()
